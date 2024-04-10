@@ -19,38 +19,44 @@ def main():
 
   # Assemble initial tree
   braille_tree = BrailleTree()
+
   # read values from file
   braille_tree.read_file("alphabet.txt")
+
   if debug:
     braille_tree.print()
-  # write traversal of tree
-    '''Uncomment to run your write_values function'''
+
+  # UNCOMMENT THE FOLLOWING TO RUN YOUR WRITE_VALUES FUNCTION.
+
+  # # write traversal of tree
   # braille_tree.write_values("traversal.txt")
-  # interactive_translator(braille_tree, debug)
+
+  # while True:
+  #   braille = input("Give a braille sequence of 0's and 1's to translate.\n")
+
+  #   translation = interactive_translator(braille_tree, braille)
+
+  #   print("Braille Translation: ", translation)
+
+  #   if debug:
+  #     braille_tree.print()
+  #     print()
+
+  #   response = input("Enter another sequence? ")
+  #   if not is_yes(response):
+  #     break
 
 
-def interactive_translator(braille_tree, debug):
-  # interactive translator
-  while True:
-    braille = input("Give a braille sequence of 0's and 1's to translate.\n")
+def interactive_translator(braille_tree, braille):
+  """Currently returns the character or alternatively _ if the character is not in the tree. You will need to reject invalid braille strings and extend the translator to process whole words."""
+  # TODO Task 4 and 5
+  translation = braille_tree.check_braille(braille)
 
-    # TODO: Check for invalid input braille sequence here
+  if translation != None:
+    return translation
+  else:
+    return "_"
 
-    # TODO: Edit code here to translate whole braille words
-
-    translation = braille_tree.check_braille(braille)
-    if translation != None:
-      print("Braille Translation: ", translation)
-    else:
-      print("Braille sequence", braille, "not in tree.")
-
-    if debug:
-      braille_tree.print()
-      print()
-
-    response = input("Enter another sequence? ")
-    if not is_yes(response):
-      break
 
 if __name__=="__main__":
   main()
